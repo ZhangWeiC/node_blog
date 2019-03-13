@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <meta name="description" content="this is weichenz blog"> 
+  <meta name="keywords" content="Node,Node.js,Node技术">
+  <title>Node个人博客</title>
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" href="/stylesheets/main.css">
+</head> -->
+<%- include("./public/head.ejs") %>
+<body>
+  <!-- <header>
+    <h1>weichenz blog</h1>
+  </header> -->
+  <%- include("./public/header.ejs") %>
+  <section class="main floatfix">
+    <!-- <aside>
+      <section class="main-aside-avatar">
+        <img src="/images" alt="icon">
+      </section>
+      <ul>
+        <li><a href="">撰写文章</a></li>
+        <li><a href="">关于博客</a></li>
+        <li><a href="">友情连接</a></li>
+        <li><a href="">登出博客</a></li>
+      </ul>
+    </aside> -->
+    <%- include("./public/aside.ejs") %>
+    <section class="main-articles">
+      <ul>
+        <% for(var i=0, len=articles.length; i<len; i++ ){ %>
+          <li class="main-articles-item">
+            <h2>
+              <a href="/articles/<%= articles[i].articleID %>"><%= articles[i].articleTitle%></a>
+            </h2>
+            <section class="main-articles-items-des">
+            <p>
+              <span>作者：<%= articles[i].articleAuthor %></span>
+              <span>发布时间：<%= articles[i].articleTime %></span>
+              <span>浏览量<%= articles[i].articleClick %></span>
+              <% if(user){ %>
+                <span class="delete"><a href="/delete/<%= articles[i].articleID %>">删除</a></span>
+                <span class="modify"><a href="/modify/<%= articles[i].articleID %>">编辑</a></span>
+              <% } %>
+            </p>
+            </section>
+          </li>
+        <% } %>
+      </ul>
+      <% if(pageNum>1){ %>
+        <section class="page">
+          <% for(var i=0, max=pageNum; i<max; i++){ %>
+            <span <% if(i == page){ %> class="active" <% } %> >
+              <a href="/?page= <%=i%>"><%=i%></a>
+            </span>
+          <% } %>
+        </section>
+      <% } %>
+    </section>
+  </section>
+  <!-- <footer>
+    <p>Copyright © 2019 Node</p>
+    <p>Powered by Weichenz</p>
+  </footer> -->
+  <%- include("./public/footer.ejs") %>
+</body>
+</html>

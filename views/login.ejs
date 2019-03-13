@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="login">
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="this is weichenz blog">
+    <meta name="keywords" content="Node,Node.js,Node技术">
+    <title>Node个人博客</title>
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head> -->
+<%- include("./public/head.ejs") %>
+<body>
+    <section>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="登录名">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="密码">
+                <%if(message) {%>
+                    <p> <%= message%> </p>
+                <% } %>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="登录">
+            </div>
+        </form>
+    </section>
+</body>
+
+<!-- <footer>
+    <p>Copyright © 2019 Node</p>
+    <p>Powered by Weichenz</p>
+</footer> -->
+<%- include("./public/footer.ejs") %>
+</html>
